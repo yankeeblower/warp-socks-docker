@@ -28,9 +28,9 @@ if [ $? -eq 0 ]; then
 fi
 
 docker run -d --restart=unless-stopped --name "${HOST_NAME}" \
-  -v "${DIR}/entrypoint.sh:/entrypoint.sh:ro" \
+  -v "${DIR}/entrypoint.sh:/entrypoint.sh:ro" --net=container:vpn \
   --entrypoint /entrypoint.sh \
-  -p "$PORT:1080" \
+#  -p "$PORT:1080" \
   "${HOST_NAME}:latest"
 
 sleep 5
